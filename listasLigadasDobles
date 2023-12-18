@@ -1,0 +1,83 @@
+public class UsaListaDoble{
+    
+    public static void main(String[] args){
+        ListaDoble lista = new ListaDoble();
+        lista.insertaPrimerNodo("A");
+        lista.imprimir();
+        
+        /*
+        lista.insertaAntesUltimoNodo("B");
+        lista.imprimir();
+        */
+    }
+}
+
+public class ListaDoble{
+    Node topForward;
+    Node topBackward;
+
+    //Métodos para los casos de inserción de nodos
+    public boolean insertaPrimerNodo(String dato){
+        if (topForward == null) { //La lista está vacía
+            topForward = new Node();
+            topForward.name = dato;
+            topForward.previous = null;
+            topForward.next = null;
+            
+            topBackward = topForward;
+
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    /*
+    public boolean insertaAntesUltimoNodo(String dato) {
+        Node temp = new Node();
+        temp.name = dato;
+        Node temp2 = this.topForward;
+        
+        while((temp2.next != null) == false){
+            temp2 = temp2.next;
+        }
+        
+        if (temp2 != null) {
+            temp = temp2;
+            temp.previous = topForward.next;
+            temp.next = null;
+            temp = null;
+            temp2 = null;
+            
+            return true;
+        }
+        
+        else {
+            return false;
+        }
+    }
+    */
+    
+    /*
+    public void buscarNodo(String buscado) {
+        
+    }
+    */
+    
+    public void imprimir(){
+        System.out.print("[X]"); 
+
+        for (Node temp = this.topForward; temp != null; temp = temp.next){
+            System.out.print(" <- [ " + temp.name + " ] -> ");
+        }
+
+        System.out.print("[X]\n"); 
+    }
+}
+
+public class Node {
+    String name; //campo de datos
+    Node previous; //campo enlace
+    Node next;   //campo enlace
+}
